@@ -1,0 +1,16 @@
+@import "./assets/scss/app.scss";
+
+.resize-none {
+	resize: none;
+}
+
+.required {
+    &:after {
+        content: "*";
+        position: relative;
+        font-size: inherit;
+        color: #F8285A;
+        padding-left: 0.25rem;
+        font-weight: 600
+    }
+}

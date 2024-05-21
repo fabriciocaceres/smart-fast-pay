@@ -1,0 +1,21 @@
+{
+    "common": {
+        "message": {
+            "create_success": "Criado com sucesso",
+            "create_error": "Erro ao criar"
+        },
+        "error": {
+            "required_field": "Campo obrigatório"
+        }
+    },
+    "navbar": {
+        "pages": "Pages",
+        "new_transaction": "Nova Transação"
+    },
+    "transaction": {
+		"new_transaction": "Nova Transação",
+        "field_description": "Descrição",
+        "field_currency": "Moeda",
+        "field_amount": "Valor"
+    }
+}
