@@ -23,7 +23,7 @@ jobs:
       - name: Build project
         run: npm run build
         env:
-          BASE_URL: https://<username>.github.io/<repo-name>
+          VITE_BASE_URL: 'https://fabriciocaceres.github.io/smart-fast-pay'
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v3
