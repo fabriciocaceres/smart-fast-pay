@@ -11,9 +11,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      env:
-        BASE_URL: https://<username>.github.io/<repo-name>
-
       - name: Checkout repo
         uses: actions/checkout@v3
 
@@ -25,6 +22,8 @@ jobs:
 
       - name: Build project
         run: npm run build
+        env:
+          BASE_URL: https://<username>.github.io/<repo-name>
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v3
