@@ -3,6 +3,7 @@ import path from 'path';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+    base: '/smart-fast-pay',
     plugins: [react()],
     resolve: {
         alias: {
