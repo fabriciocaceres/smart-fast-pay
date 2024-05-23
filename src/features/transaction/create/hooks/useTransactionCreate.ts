@@ -1,6 +1,6 @@
 import { CurrencyGetResponse, TransactionCreateRequest } from '@/@types';
 import { SelectOption } from '@/components';
-import { useI18n } from '@/config';
+import { useI18n, useStore } from '@/config';
 import { PATH } from '@/router';
 import { CurrencyService, TransactionService } from '@/services';
 //@ts-ignore
@@ -11,19 +11,22 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { TransactionFormType, useTransactionScheme } from './useTransactionScheme';
 
-const defaultValues: TransactionFormType = {
-    amount: '',
-    description: '',
-    currency: null,
-    date: ''
-}
+
 export const useTransactionCreate = () => {
+    const currency = useStore((state) => state.currency);
     const navigate = useNavigate();
     const { translate } = useI18n();
     const { enqueueSnackbar } = useSnackbar();
     const [currencies, setCurrencies] = useState<SelectOption<CurrencyGetResponse>[]>([]);
 
     const { schema } = useTransactionScheme();
+
+    const defaultValues: TransactionFormType = {
+        amount: '',
+        description: '',
+        currency: currency ? {id: currency.id, label: currency.name+" ("+currency.symbol+")", value: currency } : null,
+        date: ''
+    }
 
     const form = useForm<TransactionFormType>({
         resolver: yupResolver(schema),

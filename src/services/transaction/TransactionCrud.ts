@@ -1,9 +1,10 @@
 import { TransactionCreateRequest, TransactionGetResponse } from '@/@types';
 import { useLocalStorage } from '@/helper';
 import { Guid } from 'guid-typescript';
+import { mockTransactions } from '../mock';
 
 export const useTransactionCrud = () => {
-    const [transactions, setTransactions] = useLocalStorage('sfp-transactions', []);
+    const [transactions, setTransactions] = useLocalStorage('sfp@transactions', mockTransactions);
 
     const create = (data: TransactionCreateRequest) => {
         const newData = {

@@ -1,5 +1,5 @@
 import { CurrencyGetResponse, TransactionGetResponse } from '@/@types';
-import { useI18n } from '@/config';
+import { useI18n, useStore } from '@/config';
 import { PATH } from '@/router';
 import { CurrencyService, TransactionService } from '@/services';
 import { useSnackbar } from 'notistack';
@@ -7,17 +7,22 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const useTransactionList = () => {
+    const currencyId = useStore((state) => state.currencyId);
     const { translate } = useI18n();
-    const [transactions, setTransactions] = useState<TransactionGetResponse[]>([]);
-    const [currencies, setCurrencies] = useState<Record<string, CurrencyGetResponse>>({});
-    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const { enqueueSnackbar } = useSnackbar();
 
+    const [transactions, setTransactions] = useState<TransactionGetResponse[]>([]);
+    const [currencies, setCurrencies] = useState<Record<string, CurrencyGetResponse>>({});
+    const [loading, setLoading] = useState(false);
+
     useEffect(() => {
-        fetchTransactions();
         fetchCurrencies();
     }, []);
+
+    useEffect(() => {
+        fetchTransactions();
+    },[currencyId])
 
     const fetchCurrencies = async () => {
         try {
@@ -32,7 +37,7 @@ const useTransactionList = () => {
     const fetchTransactions = async () => {
         setLoading(true);
         try {
-            const data = await TransactionService.list();
+            const data = await TransactionService.listByCurrency(currencyId);
             setTransactions(data);
         } catch (err) {
             enqueueSnackbar(translate('common.message.list_error'), { variant: 'error' });

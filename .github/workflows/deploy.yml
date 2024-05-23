@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      env:
+        BASE_URL: https://<username>.github.io/<repo-name>
+
       - name: Checkout repo
         uses: actions/checkout@v3
 

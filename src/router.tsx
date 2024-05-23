@@ -14,20 +14,22 @@ const preserved = Object.keys(PRESERVED).reduce((preserved, file) => {
 }, {});
 
 const routes = Object.keys(ROUTES).map(route => {
-    const path = route
-        .replace(/\/src\/pages|index|\.tsx$/g, '')
+    const path = (import.meta.env.BASE_URL+"/"+route)
+        .replace(/\/src\/pages|dashboard|index|\.tsx$/g, '')
         .replace(/\[\.{3}.+\]/, '*')
-        .replace(/\[(.+)\]/, ':$1');
+        .replace(/\[(.+)\]/, ':$1')
+        .replace(/\/+/g, '/');
+        
 
     // @ts-ignore
     return { path, component: ROUTES[route].default };
 });
 
 export const PATH = {
-    dashboard: '/dashboard',
+    dashboard: import.meta.env.BASE_URL,
     transaction: {
-        new: '/transaction/new',
-        list: '/transaction',
+        new: (import.meta.env.BASE_URL+'/transaction/new').replace(/\/+/g, '/'),
+        list: (import.meta.env.BASE_URL+'/transaction').replace(/\/+/g, '/'),
     }
 };
 
@@ -43,9 +45,10 @@ export const Routes = () => {
             <App>
                 <Switch>
                     <Route element={<MasterLayout />}>
-                        {routes.map(({ path, component: Component = Fragment }) => (
-                            <Route key={path} path={path} Component={Component} />
-                        ))}
+                        {routes.map(({ path, component: Component = Fragment }) => {
+                            console.log(path)
+                            return  <Route key={path} path={path} Component={Component} />
+                        })}
                         <Route path="*" Component={NotFound} />
                     </Route>
                 </Switch>
