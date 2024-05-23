@@ -9,12 +9,14 @@ export const Navbar: FC = () => {
     const {pathname} = useLocation()
 
     const checkIsActive = (url: string) => {
-        const current = pathname.split(/[?#]/)[0];
+        const current = window.location.pathname.replace(/^\/[^/]+\//, '');
+        const newUrl = url.replace(/^\/[^/]+\//, '');
+
         if (!current || !url) {
             return false;
         }
 
-        if (current === url) {
+        if (current.includes(newUrl)) {
             return true;
         }
 
@@ -24,7 +26,6 @@ export const Navbar: FC = () => {
 
         return false;
     };
-
     
     return (
         <nav id="sidebar" className="sidebar js-sidebar">
