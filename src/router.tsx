@@ -7,7 +7,7 @@ import { MasterLayout } from './layout/MasterLayout';
 const PRESERVED = import.meta.globEager('/src/pages/(_app|404).tsx');
 const ROUTES = import.meta.globEager('/src/pages/**/[a-z[]*.tsx');
 
-const BASE_URL = '/smart-fast-pay';
+export const BASE_URL = '/smart-fast-pay';
 
 const preserved = Object.keys(PRESERVED).reduce((preserved, file) => {
     const key = file.replace(/\/src\/pages\/|\.tsx$/g, '');

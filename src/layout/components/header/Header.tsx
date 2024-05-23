@@ -1,3 +1,4 @@
+import { BASE_URL } from '@/router';
 import { FC } from 'react';
 import { useHeader } from './hooks/useHeader';
 
@@ -28,7 +29,7 @@ export const Header: FC = () => {
                             data-bs-toggle="dropdown"
                         >
                             <span className="symbol me-2" style={{width: 18}}>
-                                <img className="rounded-1" src={`/media/flags/${currency?.country?.toLocaleLowerCase()}.svg`}/>
+                                <img className="rounded-1" src={`${BASE_URL}/media/flags/${currency?.country?.toLocaleLowerCase()}.svg`}/>
                             </span>
                             {currency?.country} ({currency?.symbol}){' '}
                         </a>}
@@ -41,7 +42,7 @@ export const Header: FC = () => {
                                     onClick={() => handleCurrencyChange(currency.id)}
                                 >
                                     <span className="symbol me-2" style={{width: 18}}>
-                                        <img className="rounded-1" src={`/media/flags/${currency.country?.toLocaleLowerCase()}.svg`}/>
+                                        <img className="rounded-1" src={`${BASE_URL}/media/flags/${currency.country?.toLocaleLowerCase()}.svg`}/>
                                     </span>
                                     {currency.country} ({currency.symbol})
                                 </a>
