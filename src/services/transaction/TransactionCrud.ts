@@ -1,4 +1,4 @@
-import { TransactionCreateRequest } from '@/@types';
+import { TransactionCreateRequest, TransactionGetResponse } from '@/@types';
 import { useLocalStorage } from '@/helper';
 import { Guid } from 'guid-typescript';
 
@@ -19,9 +19,14 @@ export const useTransactionCrud = () => {
         return transactions;
     }
 
+    const listByCurrency = (currency: string) => {
+        return transactions.filter((t:TransactionGetResponse) => t.currency === currency);
+    }
+
     return {
         create,
         list,
+        listByCurrency
     }
 
 }

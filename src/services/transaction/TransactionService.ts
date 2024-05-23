@@ -21,10 +21,20 @@ export const TransactionService = {
     },
 
     list: (): Promise<TransactionGetResponse[]> => {
-        // return axios.get(`${PATH_TRANSACTION}/`);
         const { list } = useTransactionCrud();
 
         const response = list();
+
+        // Mock
+        return new Promise((resolve) => {
+            resolve(response);
+        });
+    },
+
+    listByCurrency: (currency: string): Promise<TransactionGetResponse[]> => {
+        const { listByCurrency } = useTransactionCrud();
+
+        const response = listByCurrency(currency);
 
         // Mock
         return new Promise((resolve) => {

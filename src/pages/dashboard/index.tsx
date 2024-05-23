@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { CurrencyGetResponse, TransactionGetResponse } from '@/@types';
-import { useI18n } from '@/config';
+import { useI18n, useStore } from '@/config';
 import { useFormatDateTime, useFormatNumber } from '@/helper';
 import { CurrencyService, TransactionService } from '@/services';
 import { BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Title, Tooltip } from 'chart.js';
@@ -40,10 +40,11 @@ export default function Home() {
     const { fDate } = useFormatDateTime();
     const { fCurrency } = useFormatNumber();
     const { translate } = useI18n();
+    const currencyId = useStore((state) => state.currencyId);
 
     const fetchTransactions = async () => {
         try {
-            const response = await TransactionService.list();
+            const response = await TransactionService.listByCurrency(currencyId);
             setTransactions(response);
             const totalsByDate = response.reduce((totals, transaction) => {
                 const date = fDate(transaction.date);
@@ -89,8 +90,11 @@ export default function Home() {
 
     useEffect(() => {
         fetchCurrencies();
-        fetchTransactions();
     }, []);
+
+    useEffect(() => {
+        fetchTransactions();
+    }, [currencyId]);
 
     return (
         <div className="container-fluid p-0">

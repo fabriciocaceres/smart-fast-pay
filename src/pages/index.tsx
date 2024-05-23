@@ -1,4 +1,4 @@
 export default function Home() {
-    window.location.href = '/dashboard';
+    window.location.href = 'dashboard';
     return <></>
 }

@@ -26,8 +26,8 @@ export const useHeader = () => {
         }
     }
 
-    const handleCurrencyChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        useStore.setState({ currencyId: event.target.value });
+    const handleCurrencyChange = (newCurrencyId: string) => {
+        useStore.setState({ currencyId: newCurrencyId, currency: currencies.find(c => c.id === newCurrencyId)});
     };
 
     return {

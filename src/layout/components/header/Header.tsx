@@ -43,23 +43,19 @@ export const Header: FC = () => {
                             {currency?.country} ({currency?.symbol}){' '}
                         </a>
                         <div className="dropdown-menu dropdown-menu-end">
-                            <a className="dropdown-item" href="pages-profile.html">
-                                <i className="align-middle me-1" data-feather="user"></i> Profile
-                            </a>
-                            <a className="dropdown-item" href="#">
-                                <i className="align-middle me-1" data-feather="pie-chart"></i> Analytics
-                            </a>
-                            <div className="dropdown-divider"></div>
-                            <a className="dropdown-item" href="index.html">
-                                <i className="align-middle me-1" data-feather="settings"></i> Settings & Privacy
-                            </a>
-                            <a className="dropdown-item" href="#">
-                                <i className="align-middle me-1" data-feather="help-circle"></i> Help Center
-                            </a>
-                            <div className="dropdown-divider"></div>
-                            <a className="dropdown-item" href="#">
-                                Log out
-                            </a>
+                            {currencies.map(currency => (
+                                <a
+                                    key={currency.id}
+                                    className="dropdown-item"
+                                    href="#"
+                                    onClick={() => handleCurrencyChange(currency.id)}
+                                >
+                                    <span className="symbol me-2" style={{width: 18}}>
+                                        <img className="rounded-1" src={`media/flags/${currency.country?.toLocaleLowerCase()}.svg`}/>
+                                    </span>
+                                    {currency.country} ({currency.symbol})
+                                </a>
+                            ))}
                         </div>
                     </li>
                 </ul>
