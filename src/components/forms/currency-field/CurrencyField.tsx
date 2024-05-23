@@ -2,7 +2,7 @@ import { useI18n } from '@/config';
 import clsx from 'clsx';
 import { FC } from 'react';
 import { Form } from 'react-bootstrap';
-import { Controller, useFormContext } from 'react-hook-form';
+import { Controller, useFormContext, useFormState } from 'react-hook-form';
 import MaskedInput from 'react-text-mask';
 import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 
@@ -17,48 +17,41 @@ interface CurrencyFieldProps {
 }
 
 const defaultMaskOptions = {
-    suffix: '',
+    prefix: '$',
     includeThousandsSeparator: true,
     thousandsSeparatorSymbol: '.',
     allowDecimal: true,
     decimalSymbol: ',',
     decimalLimit: 2, // how many digits allowed after the decimal
-    integerLimit: 7, // limit length of integer numbers
     allowNegative: false,
     allowLeadingZeroes: false
 };
 
 export const CurrencyField: FC<CurrencyFieldProps> = props => {
     const { name, label, inputClassName, required, prefix, ...other } = props;
-    // const [currencyMask, setCurrencyMask] = useState<any>(
-    //     createNumberMask({
-    //         ...defaultMaskOptions,
-    //         prefix: prefix || defaultMaskOptions.prefix
-    //     })
-    // );
-
-    const { control, register } = useFormContext();
+    const { control, setValue, getFieldState, formState, trigger, register } = useFormContext();
+    const { isSubmitted } = useFormState();
     const { translate } = useI18n();
 
     const currencyMask = createNumberMask(defaultMaskOptions);
 
-    // useEffect(() => {
-    //     if (prefix) {
-    //         setCurrencyMask(
-    //             createNumberMask({
-    //                 ...defaultMaskOptions,
-    //                 prefix: prefix
-    //             })
-    //         );
-    //     }
-    // }, [prefix]);
+    const handleChange = (value: string) => {
+        setValue(name, value);
+        triggerTextField();
+    };
+
+    const triggerTextField = () => {
+        if (!isSubmitted) return;
+
+        trigger(name);
+    };
 
     return (
         <Controller
             name={name}
             control={control}
             render={({ field, fieldState: { error } }) => (
-                <Form.Group className="fv-row" style={{ marginBottom: 10 }}>
+                <Form.Group className="fv-row" style={{ marginBottom: 20 }}>
                     <Form.Label className={`${required ? 'required' : ''}`}>{label}</Form.Label>
                     <MaskedInput
                         prefix={prefix}
@@ -69,7 +62,9 @@ export const CurrencyField: FC<CurrencyFieldProps> = props => {
                         placeholder={translate(other.placeholder || '')}
                         disabled={other.disabled}
                         required={required}
-                        {...register(name, { required: required })}
+                        onChange={e => {
+                            handleChange(e.target.value);
+                        }}
                     />
                     {error && <Form.Text className="text-danger">{translate(error?.message || '')}</Form.Text>}
                 </Form.Group>

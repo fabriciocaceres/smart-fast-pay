@@ -25,7 +25,7 @@ export const TextField: FC<TextFieldProps> = props => {
             name={name}
             control={control}
             render={({ field, fieldState: { error } }) => (
-                <Form.Group className="fv-row" style={{marginBottom: 10}}>
+                <Form.Group className="fv-row" style={{marginBottom: 20}}>
                     <Form.Label className={`${required ? 'required' : ''}`}>{label}</Form.Label>
                     <Form.Control
                         className={inputClassName}

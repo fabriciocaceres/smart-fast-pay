@@ -27,6 +27,7 @@ export const PATH = {
     dashboard: '/dashboard',
     transaction: {
         new: '/transaction/new',
+        list: '/transaction',
     }
 };
 

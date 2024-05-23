@@ -41,12 +41,22 @@ export const useTransactionCreate = () => {
             enqueueSnackbar(translate('common.message.error'), { variant: 'error' });
         }
     }
+
+    function unmaskValue(maskedValue: string): number {
+        const unmaskedValue = maskedValue
+            .replace(/\./g, '') // remove thousands separator
+            .replace(',', '.') // replace decimal separator with a dot
+            .replace('$', '') // remove suffix
+            .replace('R$', ''); // remove suffix
+    
+        return Number(unmaskedValue);
+    }
    
     const onSubmit = async (values: TransactionFormType) => {
 
         const body: TransactionCreateRequest = {
             description: values.description,
-            amount: Number(values.amount),
+            amount: unmaskValue(values.amount),
             currency: values.currency?.id as string,
             date: values.date
         };
@@ -54,10 +64,8 @@ export const useTransactionCreate = () => {
         try {
 
             await TransactionService.create(body);
-
             enqueueSnackbar(translate('common.message.create_success'));
-
-            navigate(PATH.dashboard);
+            navigate(PATH.transaction.list);
 
         } catch (error) {
             enqueueSnackbar(translate('common.message.create_error'), { variant: 'error' });

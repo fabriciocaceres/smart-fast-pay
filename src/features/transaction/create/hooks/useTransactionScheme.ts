@@ -13,7 +13,8 @@ export const useTransactionScheme = () => {
     const schema = Yup.object<TransactionFormType>().shape({
         description: Yup.string().notRequired(),
         amount: Yup.string().required('common.error.required_field'),
-        currency: Yup.object().required('common.error.required_field')
+        currency: Yup.object().required('common.error.required_field'),
+        date: Yup.string().required('common.error.required_field')
     });
 
     return {

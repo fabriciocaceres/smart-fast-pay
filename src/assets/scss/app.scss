@@ -9,6 +9,7 @@
 @import "1-variables/app";
 
 // Bootstrap
+@import "bootstrap/scss/bootstrap";
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
 @import "bootstrap/scss/maps";
@@ -38,6 +39,7 @@
 
 // Theme mixins
 @import "2-mixins/button";
+@import "2-mixins/symbol";
 
 // Theme components
 @import "3-components/avatar";

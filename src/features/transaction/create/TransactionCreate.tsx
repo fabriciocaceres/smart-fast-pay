@@ -1,16 +1,17 @@
-import { CurrencyField, FormProvider, SelectField, TextField } from '@/components';
+import { CurrencyField, DatePickerField, FormProvider, SelectField, TextField } from '@/components';
 import { useI18n } from '@/config';
 import { FC } from 'react';
 import { Card, Col } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import { useTransactionCreate } from './hooks/useTransactionCreate';
 
 export const TransactionCreate: FC = () => {
     const { translate } = useI18n();
+    const navigate = useNavigate();
 
     const { form, onSubmit, currencies } = useTransactionCreate();
 
     const watchCurrency = form.watch('currency');
-    console.log(watchCurrency);
 
     return (
         <div className="d-flex flex-column flex-column-fluid p-0">
@@ -18,7 +19,7 @@ export const TransactionCreate: FC = () => {
                 <h1 className="h3 d-inline align-middle">{translate('transaction.new_transaction')}</h1>
             </div>
             <Card className="">
-                <FormProvider methods={form} id="forms-form">
+                <FormProvider onSubmit={form.handleSubmit(onSubmit)} methods={form} id="transaction-form">
                     <Card.Body>
                         <Col className="w-50">
                             <SelectField
@@ -45,26 +46,22 @@ export const TransactionCreate: FC = () => {
                                 rows={4}
                                 inputClassName="resize-none"
                             />
-                            {/* 
-                            <WiTextField
-                                as="select"
-                                name="scope"
-                                label={translate('forms.fields.scope')}
-                                placeholder={translate('forms.fields.scope')}
-                                rows={4}
-                            >
-                                {Object.values(FormScope).map(value => (
-                                    <option value={value}>{translate(`forms.scope.${value.toLowerCase()}`)}</option>
-                                ))}
-                            </WiTextField>
-
-                            <WiTagField
-                                name="labels"
-                                label={translate('forms.fields.labels')}
-                                placeholder={translate('forms.fields.labels')}
-                            /> */}
+                            <DatePickerField
+                                name="date"
+                                label={translate('transaction.field_date')}
+                                placeholder={translate('transaction.field_date')}
+                                required
+                            />
                         </Col>
                     </Card.Body>
+                    <Card.Footer className="d-flex justify-content-end">
+                        <button type="reset" className="btn btn-secondary" onClick={() => {navigate(-1)}}>
+                            {translate('common.cancel')}
+                        </button>
+                        <button type="submit" className="btn btn-primary ms-2" form="transaction-form">
+                            {translate('common.save')}
+                        </button>
+                    </Card.Footer>
                 </FormProvider>
             </Card>
         </div>

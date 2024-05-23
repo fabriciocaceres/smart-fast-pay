@@ -60,7 +60,7 @@ export const SelectField = <T,>(props: SelectProps<T>) => {
             name={name}
             control={control}
             render={({ field, fieldState: { error } }) => (
-                <Form.Group className="fv-row mb-10" style={{marginBottom: 10}}>
+                <Form.Group className="fv-row mb-10" style={{marginBottom: 20}}>
                     <Form.Label className={`${required ? 'required' : ''}`}>{label}</Form.Label>
                     <Select
                         menuPortalTarget={document.body}

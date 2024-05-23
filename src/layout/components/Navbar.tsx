@@ -1,4 +1,5 @@
 import { useI18n } from '@/config/i18n';
+import { PATH } from '@/router';
 import clsx from 'clsx';
 import { FC } from 'react';
 import { Link, useLocation } from 'react-router-dom';
@@ -35,17 +36,17 @@ export const Navbar: FC = () => {
                 <ul className="sidebar-nav">
                     <li className="sidebar-header">{translate('navbar.pages')}</li>
 
-                    <li className={clsx('sidebar-item', {'active': checkIsActive('/dashboard')})} >
-                        <Link to="/dashboard" className="sidebar-link">
+                    <li className={clsx('sidebar-item', {'active': checkIsActive(PATH.dashboard)})} >
+                        <Link to={PATH.dashboard} className="sidebar-link">
                             <i className="align-middle bi bi-sliders2-vertical"></i>{' '}
                             <span className="align-middle">Dashboard</span>
                         </Link>
                     </li>
 
-                    <li className={clsx('sidebar-item', {'active': checkIsActive('/transaction/new')})}>
-                        <Link to="/transaction/new" className="sidebar-link">
+                    <li className={clsx('sidebar-item', {'active': checkIsActive(PATH.transaction.list)})}>
+                        <Link to={PATH.transaction.list} className="sidebar-link">
                             <i className="align-middle bi bi-credit-card"></i>{' '}
-                            <span className="align-middle">{translate('navbar.new_transaction')}</span>
+                            <span className="align-middle">{translate('navbar.transactions')}</span>
                         </Link>
                     </li>
                 </ul>

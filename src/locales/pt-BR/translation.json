@@ -1,8 +1,11 @@
 {
     "common": {
+        "save": "Salvar",
+        "cancel": "Cancelar",
         "message": {
             "create_success": "Criado com sucesso",
-            "create_error": "Erro ao criar"
+            "create_error": "Erro ao criar",
+            "list_error": "Erro ao buscar lista"
         },
         "error": {
             "required_field": "Campo obrigatório"
@@ -10,12 +13,20 @@
     },
     "navbar": {
         "pages": "Pages",
-        "new_transaction": "Nova Transação"
+        "transactions": "Transações"
     },
     "transaction": {
+        "transactions":"Transações",
 		"new_transaction": "Nova Transação",
         "field_description": "Descrição",
         "field_currency": "Moeda",
-        "field_amount": "Valor"
+        "field_amount": "Valor",
+        "field_date": "Data da Transação",
+        "table": {
+            "description": "Descrição",
+            "currency": "Moeda",
+            "amount": "Valor",
+            "date": "Data da Transação"
+        }
     }
 }

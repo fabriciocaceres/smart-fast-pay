@@ -1,5 +1,5 @@
 import { TransactionCreateRequest } from '@/@types';
-import { useLocalStorage } from '@/config';
+import { useLocalStorage } from '@/helper';
 import { Guid } from 'guid-typescript';
 
 export const useTransactionCrud = () => {
