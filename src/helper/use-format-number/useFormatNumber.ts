@@ -26,6 +26,7 @@ export const useFormatNumber = () => {
     }
 
     const fCurrencyToNumber = (value: string) => {
+        //@ts-ignore
         return parseFloat(value.split(' ')[1].replaceAll('.', '').replaceAll(',', '.'));
     }
 

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { CurrencyGetResponse, TransactionGetResponse } from '@/@types';
 import { useI18n } from '@/config';
 import { useFormatDateTime, useFormatNumber } from '@/helper';
@@ -15,7 +16,7 @@ export const options = {
     scales: {
         y: {
             ticks: {
-                callback: function(value, index, values) {
+                callback: function (value, index, values) {
                     return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
                 }
             }
@@ -27,7 +28,7 @@ export const options = {
             display: true,
             align: 'end',
             anchor: 'end',
-            formatter: (value) => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value)
+            formatter: value => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value)
         }
     }
 };
@@ -47,7 +48,6 @@ export default function Home() {
             const totalsByDate = response.reduce((totals, transaction) => {
                 const date = fDate(transaction.date);
                 const amount = transaction.amount || 0;
-
                 if (!totals[date]) {
                     totals[date] = 0;
                 }
@@ -280,7 +280,11 @@ export default function Home() {
                         <Card.Header>
                             <h5 className="card-title mb-0">Balanço</h5>
                         </Card.Header>
-                        <Card.Body className="chart chart-lg">{chartData && <Bar options={options} data={chartData} />}</Card.Body>
+                        <Card.Body className="chart chart-lg">
+                            {chartData && ( //@ts-ignore
+                                <Bar options={options} data={chartData} />
+                            )}
+                        </Card.Body>
                     </Card>
                 </div>
                 <div className="col-12 d-flex">

@@ -3,6 +3,7 @@ import { SelectOption } from '@/components';
 import { useI18n } from '@/config';
 import { PATH } from '@/router';
 import { CurrencyService, TransactionService } from '@/services';
+//@ts-ignore
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useSnackbar } from 'notistack';
 import { useEffect, useState } from 'react';

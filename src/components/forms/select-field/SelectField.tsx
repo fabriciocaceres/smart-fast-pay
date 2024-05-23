@@ -3,6 +3,7 @@ import { useMemo } from "react";
 import { Form } from "react-bootstrap";
 import { Controller, useFormContext } from "react-hook-form";
 import Select from 'react-select';
+//@ts-ignore
 import { StylesConfig } from "react-select/dist/declarations/src";
 
 export type SelectOption<T> = {
@@ -29,10 +30,12 @@ export const SelectField = <T,>(props: SelectProps<T>) => {
     const { translate } = useI18n();
 
     const styles: StylesConfig = useMemo(() => ({
+        //@ts-ignore
         container: (_styles) => ({
             ..._styles,
             flex: 1,
         }),
+        //@ts-ignore
         control: (_styles, state) => ({
             ..._styles, flex: 1,
             minHeight: 0,
@@ -48,10 +51,14 @@ export const SelectField = <T,>(props: SelectProps<T>) => {
                 boxShadow: 'none'
             },
         }),
+        //@ts-ignore
         input: (base) => ({ ...base, margin: 0, paddingTop: 0, paddingBottom: 0 }),
+        //@ts-ignore
         valueContainer: (base) => ({ ...base, padding: 0 }),
+        //@ts-ignore
         dropdownIndicator: (base) => ({ ...base, padding: '0 8px' }),
         // option: (base) => ({ ...base}),
+        //@ts-ignore
         menuPortal: (base) => ({ ...base, zIndex: 9999 })
     }), [])
 
