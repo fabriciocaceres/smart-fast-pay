@@ -7,6 +7,8 @@ import { MasterLayout } from './layout/MasterLayout';
 const PRESERVED = import.meta.globEager('/src/pages/(_app|404).tsx');
 const ROUTES = import.meta.globEager('/src/pages/**/[a-z[]*.tsx');
 
+const BASE_URL = '/smart-fast-pay';
+
 const preserved = Object.keys(PRESERVED).reduce((preserved, file) => {
     const key = file.replace(/\/src\/pages\/|\.tsx$/g, '');
     // @ts-ignore
@@ -14,7 +16,7 @@ const preserved = Object.keys(PRESERVED).reduce((preserved, file) => {
 }, {});
 
 const routes = Object.keys(ROUTES).map(route => {
-    const path = (import.meta.env.VITE_BASE_URL+"/"+route)
+    const path = (BASE_URL+"/"+route)
         .replace(/\/src\/pages|dashboard|index|\.tsx$/g, '')
         .replace(/\[\.{3}.+\]/, '*')
         .replace(/\[(.+)\]/, ':$1')
@@ -26,10 +28,10 @@ const routes = Object.keys(ROUTES).map(route => {
 });
 
 export const PATH = {
-    dashboard: import.meta.env.VITE_BASE_URL,
+    dashboard: BASE_URL,
     transaction: {
-        new: (import.meta.env.VITE_BASE_URL+'/transaction/new').replace(/\/+/g, '/'),
-        list: (import.meta.env.VITE_BASE_URL+'/transaction').replace(/\/+/g, '/'),
+        new: (BASE_URL+'/transaction/new').replace(/\/+/g, '/'),
+        list: (BASE_URL+'/transaction').replace(/\/+/g, '/'),
     }
 };
 
