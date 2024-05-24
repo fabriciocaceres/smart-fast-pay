@@ -3,7 +3,7 @@
         "save": "Save",
         "cancel": "Cancel",
         "format": {
-            "date": "MM/DD/YYYY"
+            "date": "m/d/Y"
         },
         "message": {
             "create_success": "Successful",
