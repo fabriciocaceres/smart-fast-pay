@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Fragment } from 'react';
 import { Route, Routes as Switch } from 'react-router-dom';
-import { SnackbarProvider } from './components';
 import { MasterLayout } from './layout/MasterLayout';
+import { SnackbarProvider } from './shared';
 
 const PRESERVED = import.meta.globEager('/src/pages/(_app|404).tsx');
 const ROUTES = import.meta.globEager('/src/pages/**/[a-z[]*.tsx');

@@ -1,4 +1,4 @@
-import { useLocalStorage } from '@/helper';
+import { useLocalStorage } from '@/shared';
 import { mockCurrencies } from '../mock';
 
 export const useCurrencyCrud = () => {

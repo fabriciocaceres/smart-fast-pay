@@ -3,10 +3,10 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import { FC, ReactNode, createContext, useContext, useMemo, useState } from 'react';
 import { initReactI18next } from 'react-i18next';
 
-import en from '@/locales/en/translation.json';
-import es from '@/locales/es/translation.json';
-import pt_BR from '@/locales/pt-BR/translation.json';
 import { I18nLanguages, I18nType } from './I18nType';
+import en from './locales/en/translation.json';
+import es from './locales/es/translation.json';
+import pt_BR from './locales/pt-BR/translation.json';
 
 const localStorageI18nLang = localStorage.getItem('i18nextLng');
 

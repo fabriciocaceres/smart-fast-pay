@@ -1,5 +1,5 @@
-import { CurrencyField, DatePickerField, FormProvider, SelectField, TextField } from '@/components';
 import { useI18n } from '@/config';
+import { CurrencyField, DatePickerField, FormProvider, SelectField, TextField } from '@/shared';
 import { FC } from 'react';
 import { Card, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';

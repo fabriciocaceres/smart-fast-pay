@@ -1,5 +1,5 @@
 import { TransactionCreateRequest, TransactionGetResponse } from '@/@types';
-import { useLocalStorage } from '@/helper';
+import { useLocalStorage } from '@/shared';
 import { Guid } from 'guid-typescript';
 import { mockTransactions } from '../mock';
 

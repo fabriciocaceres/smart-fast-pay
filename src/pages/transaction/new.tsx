@@ -1,4 +1,4 @@
-import { TransactionCreate } from '@/features/transaction/create/TransactionCreate';
+import { TransactionCreate } from '@/modules/transaction/create/TransactionCreate';
 
 const TransactionNew = () => <TransactionCreate />
 

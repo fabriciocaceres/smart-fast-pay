@@ -1,8 +1,8 @@
 import { CurrencyGetResponse, TransactionCreateRequest } from '@/@types';
-import { SelectOption } from '@/components';
 import { useI18n, useStore } from '@/config';
 import { PATH } from '@/router';
 import { CurrencyService, TransactionService } from '@/services';
+import { SelectOption } from '@/shared';
 //@ts-ignore
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useSnackbar } from 'notistack';

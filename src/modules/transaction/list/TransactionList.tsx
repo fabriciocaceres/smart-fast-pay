@@ -1,6 +1,5 @@
-import { SpinnerOverlay } from '@/components';
 import { useI18n } from '@/config';
-import { useFormatDateTime, useFormatNumber } from '@/helper';
+import { SpinnerOverlay, useFormatDateTime, useFormatNumber } from '@/shared';
 import React from 'react';
 import { Button, Card, Table } from 'react-bootstrap';
 import useTransactionList from './hooks/useTransactionList';
@@ -15,8 +14,8 @@ interface TransactionListProps {}
 
 const TransactionList: React.FC<TransactionListProps> = () => {
     const { transactions, currencies, loading, goToNewTransaction } = useTransactionList();
-    const { fDate } = useFormatDateTime();
-    const {fCurrency} =useFormatNumber();
+    const { formatDate } = useFormatDateTime();
+    const { formatCurrency } = useFormatNumber();
     const { translate } = useI18n();
 
     return (
@@ -42,8 +41,14 @@ const TransactionList: React.FC<TransactionListProps> = () => {
                         <tbody>
                             {transactions.map((transaction, index) => (
                                 <tr key={index}>
-                                    <td>{fDate(transaction.date)}</td>
-                                    <td>{fCurrency(transaction.amount, currencies[transaction.currency].code, currencies[transaction.currency].currency)}</td>
+                                    <td>{formatDate(transaction.date)}</td>
+                                    <td>
+                                        {formatCurrency(
+                                            transaction.amount,
+                                            currencies[transaction.currency].code,
+                                            currencies[transaction.currency].currency
+                                        )}
+                                    </td>
                                     <td>
                                         {currencies[transaction.currency]
                                             ? currencies[transaction.currency].name +

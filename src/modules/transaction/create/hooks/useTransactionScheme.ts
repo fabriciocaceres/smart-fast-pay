@@ -1,5 +1,5 @@
 import { CurrencyGetResponse } from '@/@types';
-import { SelectOption } from '@/components';
+import { SelectOption } from '@/shared';
 import * as Yup from 'yup';
 
 export interface TransactionFormType {

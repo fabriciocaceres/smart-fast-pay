@@ -1,4 +1,4 @@
-import TransactionList from '@/features/transaction/list/TransactionList';
+import TransactionList from '@/modules/transaction/list/TransactionList';
 
 const Transaction = () => <TransactionList />
 
