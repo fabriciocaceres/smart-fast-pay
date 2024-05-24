@@ -1,5 +1,6 @@
 import { useI18n } from '@/config';
 import clsx from 'clsx';
+import { Portuguese } from "flatpickr/dist/l10n/pt.js";
 import { FC } from 'react';
 import { Form, FormControlProps } from 'react-bootstrap';
 import Flatpickr from 'react-flatpickr';
@@ -40,23 +41,15 @@ export const DatePickerField: FC<DatePickerFieldProps> = props => {
             render={({ field, fieldState: { error } }) => (
                 <Form.Group className="fv-row" style={{ marginBottom: 20 }}>
                     <Form.Label className={`${required ? 'required' : ''}`}>{label}</Form.Label>
-                    {/* <Form.Control
-                        className={inputClassName}
-                        {...other}
-                        rows={rows}
-                        // error={!!error}
-                        disabled={other.disabled}
-                        placeholder={translate(other.placeholder || '')}
-                        {...register(name, { required: required })}
-                    /> */}
                     <Flatpickr
                         className={clsx('form-control', inputClassName, { 'is-invalid': error })}
                         placeholder={translate(other.placeholder || '')}
                         options={{
-                            dateFormat: 'd/m/Y',
+                            dateFormat: translate('common.format.date'),
                             altInput: true,
-                            altFormat: 'd/m/Y',
-                            allowInput: true
+                            altFormat: translate('common.format.date'),
+                            allowInput: true,
+                            locale: Portuguese
                         }}
                         onChange={([date1]) => {
                             handleChange(date1);

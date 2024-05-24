@@ -2,6 +2,9 @@
     "common": {
         "save": "Salvar",
         "cancel": "Cancelar",
+        "format": {
+            "date": "DD/MM/YYYY"
+        },
         "message": {
             "create_success": "Criado com sucesso",
             "create_error": "Erro ao criar",

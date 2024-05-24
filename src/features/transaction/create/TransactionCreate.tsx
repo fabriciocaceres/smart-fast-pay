@@ -21,7 +21,7 @@ export const TransactionCreate: FC = () => {
             <Card className="">
                 <FormProvider onSubmit={form.handleSubmit(onSubmit)} methods={form} id="transaction-form">
                     <Card.Body>
-                        <Col className="w-50">
+                        <Col className="col-sm-6 col">
                             <SelectField
                                 name="currency"
                                 label={translate('transaction.field_currency')}

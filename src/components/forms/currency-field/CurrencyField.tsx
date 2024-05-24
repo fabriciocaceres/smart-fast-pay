@@ -62,6 +62,7 @@ export const CurrencyField: FC<CurrencyFieldProps> = props => {
                         placeholder={translate(other.placeholder || '')}
                         disabled={other.disabled}
                         required={required}
+                        {...register(name, { required: required })}
                         onChange={e => {
                             handleChange(e.target.value);
                         }}

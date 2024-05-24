@@ -48,7 +48,6 @@ export const Routes = () => {
                 <Switch>
                     <Route element={<MasterLayout />}>
                         {routes.map(({ path, component: Component = Fragment }) => {
-                            console.log(path)
                             return  <Route key={path} path={path} Component={Component} />
                         })}
                         <Route path="*" Component={NotFound} />
