@@ -3,13 +3,13 @@ import { FC } from 'react';
 import { useHeader } from './hooks/useHeader';
 
 export const Header: FC = () => {
-    const { currencies, currencyId, currency, handleCurrencyChange } = useHeader();
+    const { currencies, currencyId, currency, handleCurrencyChange, handleSidebarCollapseToggle } = useHeader();
 
     return (
         <nav className="navbar navbar-expand navbar-light navbar-bg d-flex">
-            <a className="sidebar-toggle js-sidebar-toggle">
+            <span className="sidebar-toggle js-sidebar-toggle" onClick={() => handleSidebarCollapseToggle()}>
                 <i className="hamburger align-self-center"></i>
-            </a>
+            </span>
 
             <div className="navbar-collapse collapse">
                 <ul className="navbar-nav navbar-align">

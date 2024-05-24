@@ -5,8 +5,6 @@ import { BrowserRouter } from 'react-router-dom';
 import '@/assets/js/app.js';
 import '@/index.scss';
 
-
-
 import { Routes } from '@/router';
 import { I18nProvider } from './config/i18n';
 

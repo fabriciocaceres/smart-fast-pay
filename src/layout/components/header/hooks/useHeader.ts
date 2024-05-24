@@ -28,16 +28,26 @@ export const useHeader = () => {
 
     const handleCurrencyChange = (newCurrencyId: string) => {
         const newCurrency = currencies.find(c => c.id === newCurrencyId);
-        
+
         if (!newCurrency) return;
 
         updateCurrency(newCurrency);
+    };
+
+    const handleSidebarCollapseToggle = () => {
+        const sidebarElement = document.getElementsByClassName('js-sidebar')[0];
+        const sidebarToggleElement = document.getElementsByClassName('js-sidebar-toggle')[0];
+
+        if (sidebarElement && sidebarToggleElement) {
+            sidebarElement.classList.toggle('collapsed');
+        }
     };
 
     return {
         currencies,
         currencyId,
         currency,
-        handleCurrencyChange
+        handleCurrencyChange,
+        handleSidebarCollapseToggle
     };
 };
