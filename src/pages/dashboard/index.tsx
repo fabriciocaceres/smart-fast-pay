@@ -8,6 +8,7 @@ import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { useEffect, useState } from 'react';
 import { Card, Table } from 'react-bootstrap';
 import { Bar } from 'react-chartjs-2';
+import Helmet from 'react-helmet';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ChartDataLabels);
 
@@ -98,6 +99,7 @@ export default function Home() {
 
     return (
         <div className="container-fluid p-0">
+            <Helmet title="Smart Fast Pay | Dashboard" />
             <h1 className="h3 mb-3">Dashboard</h1>
             <div className="row">
                 <div className="col-12 d-flex">
@@ -105,7 +107,7 @@ export default function Home() {
                         <Card.Header>
                             <h5 className="card-title mb-0">Balanço</h5>
                         </Card.Header>
-                        <Card.Body className="chart chart-lg">
+                        <Card.Body className="chart chart-lg d-flex justify-content-center" style={{overflow: 'auto'}}>
                             {chartData && ( //@ts-ignore
                                 <Bar options={options} data={chartData} />
                             )}
@@ -117,7 +119,7 @@ export default function Home() {
                         <div className="card-header">
                             <h5 className="card-title mb-0">Historico de transações</h5>
                         </div>
-                        <Card.Body className="d-flex w-100">
+                        <Card.Body className="d-flex w-100" style={{overflow: 'auto'}}>
                             <Table striped bordered hover>
                                 <thead>
                                     <tr>

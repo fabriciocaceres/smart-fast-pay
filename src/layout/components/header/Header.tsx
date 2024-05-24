@@ -14,17 +14,8 @@ export const Header: FC = () => {
             <div className="navbar-collapse collapse">
                 <ul className="navbar-nav navbar-align">
                     <li className="nav-item dropdown">
-                        <a
-                            className="nav-icon dropdown-toggle d-inline-block d-sm-none"
-                            href="#"
-                            data-bs-toggle="dropdown"
-                        >
-                            {currency?.country} ({currency?.code}){' '}
-                            <i className="align-middle" data-feather="settings"></i>
-                        </a>
-
                         {currency?.country && <a
-                            className="nav-link dropdown-toggle d-none d-sm-inline-block"
+                            className="nav-link dropdown-toggle d-sm-inline-block"
                             href="#"
                             data-bs-toggle="dropdown"
                         >

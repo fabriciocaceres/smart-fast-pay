@@ -2,6 +2,7 @@ import { useI18n } from '@/config';
 import { SpinnerOverlay, useFormatDateTime, useFormatNumber } from '@/shared';
 import React from 'react';
 import { Button, Card, Table } from 'react-bootstrap';
+import { Helmet } from 'react-helmet';
 import useTransactionList from './hooks/useTransactionList';
 
 export interface TransactionCreateRequest {
@@ -20,6 +21,7 @@ const TransactionList: React.FC<TransactionListProps> = () => {
 
     return (
         <div className="d-flex flex-column flex-column-fluid p-0">
+            <Helmet title={`Smart Fast Pay | ${translate('transaction.transactions')}`} />
             <div className="mb-3 d-flex justify-content-between">
                 <h1 className="h3 d-inline align-middle">{translate('transaction.transactions')}</h1>
                 <Button variant="primary" onClick={goToNewTransaction}>
@@ -28,7 +30,7 @@ const TransactionList: React.FC<TransactionListProps> = () => {
             </div>
             <Card className="">
                 <SpinnerOverlay show={loading} />
-                <Card.Body>
+                <Card.Body style={{overflow: 'auto'}}>
                     <Table striped bordered hover>
                         <thead>
                             <tr>

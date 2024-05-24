@@ -1,6 +1,7 @@
-import { useI18n } from '@/config';
+import { I18nLanguages, useI18n } from '@/config';
 import clsx from 'clsx';
-import { Portuguese } from "flatpickr/dist/l10n/pt.js";
+import { Spanish } from 'flatpickr/dist/l10n/es.js';
+import { Portuguese } from 'flatpickr/dist/l10n/pt.js';
 import { FC } from 'react';
 import { Form, FormControlProps } from 'react-bootstrap';
 import Flatpickr from 'react-flatpickr';
@@ -16,11 +17,16 @@ interface DatePickerFieldProps extends FormControlProps {
     placeholder?: string;
 }
 
+const locales = {
+    [I18nLanguages.Es]: Spanish,
+    [I18nLanguages.PtBr]: Portuguese
+};
+
 export const DatePickerField: FC<DatePickerFieldProps> = props => {
     const { name, label, inputClassName, required, rows, ...other } = props;
-    const { translate } = useI18n();
+    const { translate, lang } = useI18n();
 
-    const { control, setValue, getFieldState, formState, trigger, register } = useFormContext();
+    const { control, setValue, trigger } = useFormContext();
     const { isSubmitted } = useFormState();
 
     const handleChange = (date: Date) => {
@@ -49,7 +55,8 @@ export const DatePickerField: FC<DatePickerFieldProps> = props => {
                             altInput: true,
                             altFormat: translate('common.format.date'),
                             allowInput: true,
-                            locale: Portuguese
+                            //@ts-ignore
+                            locale: locales[lang]
                         }}
                         onChange={([date1]) => {
                             handleChange(date1);
