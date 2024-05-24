@@ -22,7 +22,7 @@ const defaultMaskOptions = {
     thousandsSeparatorSymbol: '.',
     allowDecimal: true,
     decimalSymbol: ',',
-    decimalLimit: 2, // how many digits allowed after the decimal
+    decimalLimit: 2, 
     allowNegative: false,
     allowLeadingZeroes: false
 };
@@ -33,7 +33,10 @@ export const CurrencyField: FC<CurrencyFieldProps> = props => {
     const { isSubmitted } = useFormState();
     const { translate } = useI18n();
 
-    const currencyMask = createNumberMask(defaultMaskOptions);
+    const maskOptions = {
+        ...defaultMaskOptions,
+        prefix: prefix || defaultMaskOptions.prefix
+    };
 
     const handleChange = (value: string) => {
         setValue(name, value);
@@ -54,8 +57,7 @@ export const CurrencyField: FC<CurrencyFieldProps> = props => {
                 <Form.Group className="fv-row" style={{ marginBottom: 20 }}>
                     <Form.Label className={`${required ? 'required' : ''}`}>{label}</Form.Label>
                     <MaskedInput
-                        prefix={prefix}
-                        mask={currencyMask}
+                        mask={createNumberMask(maskOptions)}
                         className={clsx('form-control', inputClassName)}
                         {...other}
                         {...field}
@@ -63,6 +65,7 @@ export const CurrencyField: FC<CurrencyFieldProps> = props => {
                         disabled={other.disabled}
                         required={required}
                         {...register(name, { required: required })}
+                        value={field.value || ''}
                         onChange={e => {
                             handleChange(e.target.value);
                         }}

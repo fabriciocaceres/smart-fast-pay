@@ -1,6 +1,6 @@
 import { useI18n } from '@/config';
 import { CurrencyField, DatePickerField, FormProvider, SelectField, TextField } from '@/shared';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { Card, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useTransactionCreate } from './hooks/useTransactionCreate';
@@ -12,6 +12,13 @@ export const TransactionCreate: FC = () => {
     const { form, onSubmit, currencies } = useTransactionCreate();
 
     const watchCurrency = form.watch('currency');
+
+    useEffect(() => {
+        if (watchCurrency) {
+            form.setValue('amount', '');
+        }
+
+    }, [watchCurrency]);
 
     return (
         <div className="d-flex flex-column flex-column-fluid p-0">

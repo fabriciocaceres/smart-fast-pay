@@ -8,7 +8,9 @@
         "message": {
             "create_success": "Criado com sucesso",
             "create_error": "Erro ao criar",
-            "list_error": "Erro ao buscar lista"
+            "list_error": "Erro ao buscar lista",
+            "currency_list_error": "Erro ao buscar lista de moedas",
+            "transaction_list_error": "Erro ao buscar lista de transações"
         },
         "error": {
             "required_field": "Campo obrigatório"
@@ -17,6 +19,20 @@
     "navbar": {
         "pages": "Pages",
         "transactions": "Transações"
+    },
+    "header": {
+        "suported_languages": {
+            "portuguese": "Português",
+            "english": "Inglês",
+            "spanish": "Espanhol"
+        }
+    },
+    "dashboard": {
+        "balance": "Balanço",
+        "transaction_history": "Histórico de Transações",
+        "chart": {
+            "total_day": "Total do Dia"
+        }
     },
     "transaction": {
         "transactions":"Transações",

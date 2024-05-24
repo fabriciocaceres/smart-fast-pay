@@ -37,6 +37,10 @@ export const useTransactionCreate = () => {
         getCurrency();
     }, []);
 
+    useEffect(() => {
+        form.setValue('currency', currency ? {id: currency.id, label: currency.name+" ("+currency.symbol+")", value: currency } : null);
+    }, [currency]);
+
     const getCurrency = async () => {
         try {
             const response = await CurrencyService.list();

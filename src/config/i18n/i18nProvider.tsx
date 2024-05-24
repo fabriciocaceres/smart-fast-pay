@@ -54,6 +54,7 @@ const I18nProvider: FC<Props> = ({ children }) => {
             changeLanguage: (language: I18nLanguages) => {
                 i18n.changeLanguage(language);
                 setLang(language);
+                localStorage.setItem('i18nextLng', language);
             }
         }),
         []

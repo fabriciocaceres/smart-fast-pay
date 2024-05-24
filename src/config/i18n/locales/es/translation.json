@@ -1,8 +1,51 @@
 {
-  "general": {
-    "greetings": "Olá"
+  "common": {
+      "save": "Ahorrar",
+      "cancel": "Cancelar",
+      "format": {
+          "date": "DD/MM/YYYY"
+      },
+      "message": {
+          "create_success": "Exitoso",
+          "create_error": "Error al crear",
+          "list_error": "Error al buscar la lista",
+          "currency_list_error": "Error al buscar la lista de monedas",
+          "transaction_list_error": "Error al buscar la lista de transacciones"
+      },
+      "error": {
+          "required_field": "Campo obligatorio"
+      }
   },
   "navbar": {
-    "new_transaction": "Nova Transação"
+      "pages": "Páginas",
+      "transactions": "Actas"
+  },
+  "header": {
+      "suported_languages": {
+          "portuguese": "portugués",
+          "english": "Inglés",
+          "spanish": "Español"
+      }
+  },
+  "dashboard": {
+      "balance": "Balance",
+      "transaction_history": "Historial de Transacciones",
+      "chart": {
+          "total_day": "Día total"
+      }
+  },
+  "transaction": {
+      "transactions":"Actas",
+  "new_transaction": "Nueva Transacción",
+      "field_description": "Descripción",
+      "field_currency": "Moneda",
+      "field_amount": "Valor",
+      "field_date": "Fecha de Transacción",
+      "table": {
+          "description": "Descripción",
+          "currency": "Moneda",
+          "amount": "Valor",
+          "date": "Fecha de Transacción"
+      }
   }
 }

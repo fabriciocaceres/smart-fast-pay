@@ -6,7 +6,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 export const Navbar: FC = () => {
     const { translate } = useI18n();
-    const {pathname} = useLocation()
+    const {pathname} = useLocation();
 
     const checkIsActive = (url: string) => {
         const current = window.location.pathname.replace(/^\/[^/]+\//, '');

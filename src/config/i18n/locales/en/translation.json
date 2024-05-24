@@ -1,8 +1,51 @@
 {
-  "general": {
-    "greetings": "Olá"
-  },
-  "navbar": {
-    "new_transaction": "Nova Transação"
-  }
+    "common": {
+        "save": "Save",
+        "cancel": "Cancel",
+        "format": {
+            "date": "MM/DD/YYYY"
+        },
+        "message": {
+            "create_success": "Successful",
+            "create_error": "Error when creating",
+            "list_error": "Error when searching list",
+            "currency_list_error": "Error when searching for coins list",
+            "transaction_list_error": "Error when searching for transactions list"
+        },
+        "error": {
+            "required_field": "Required field"
+        }
+    },
+    "navbar": {
+        "pages": "Pages",
+        "transactions": "Transactions"
+    },
+    "header": {
+        "suported_languages": {
+            "portuguese": "Portuguese",
+            "english": "English",
+            "spanish": "Spanish"
+        }
+    },
+    "dashboard": {
+        "balance": "Balance",
+        "transaction_history": "Transactions History",
+        "chart": {
+            "total_day": "Total day"
+        }
+    },
+    "transaction": {
+        "transactions": "Transactions",
+        "new_transaction": "New Transaction",
+        "field_description": "Description",
+        "field_currency": "Coin",
+        "field_amount": "valor",
+        "field_date": "Transaction Date",
+        "table": {
+            "description": "Description",
+            "currency": "Coin",
+            "amount": "valor",
+            "date": "Transaction Date"
+        }
+    }
 }

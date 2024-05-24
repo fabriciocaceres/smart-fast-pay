@@ -40,5 +40,16 @@ export const TransactionService = {
         return new Promise((resolve) => {
             resolve(response);
         });
+    },
+
+    listHistory: (currency: string): Promise<TransactionGetResponse[]> => {
+        const { listHistory } = useTransactionCrud();
+
+        const response = listHistory(currency);
+
+        // Mock
+        return new Promise((resolve) => {
+            resolve(response);
+        });
     }
 }

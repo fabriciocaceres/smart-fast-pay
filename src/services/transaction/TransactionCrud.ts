@@ -24,10 +24,15 @@ export const useTransactionCrud = () => {
         return transactions.filter((t:TransactionGetResponse) => t.currency === currency);
     }
 
+    const listHistory = (currency: string) => {
+        return transactions.filter((t:TransactionGetResponse) => t.currency === currency).slice(-5);
+    }
+
     return {
         create,
         list,
-        listByCurrency
+        listByCurrency,
+        listHistory
     }
 
 }

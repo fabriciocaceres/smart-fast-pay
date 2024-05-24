@@ -1,5 +1,5 @@
 import TransactionList from '@/modules/transaction/list/TransactionList';
 
-const Transaction = () => <TransactionList />
+const TransactionListPage = () => <TransactionList />
 
-export default Transaction;
+export default TransactionListPage;

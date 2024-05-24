@@ -1,5 +1,5 @@
 import { TransactionCreate } from '@/modules/transaction/create/TransactionCreate';
 
-const TransactionNew = () => <TransactionCreate />
+const TransactionCreatePage = () => <TransactionCreate />
 
-export default TransactionNew;
+export default TransactionCreatePage;
