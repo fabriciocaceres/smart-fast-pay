@@ -19,7 +19,8 @@ interface DatePickerFieldProps extends FormControlProps {
 
 const locales = {
     [I18nLanguages.Es]: Spanish,
-    [I18nLanguages.PtBr]: Portuguese
+    [I18nLanguages.PtBr]: Portuguese,
+    [I18nLanguages.En]: null
 };
 
 export const DatePickerField: FC<DatePickerFieldProps> = props => {

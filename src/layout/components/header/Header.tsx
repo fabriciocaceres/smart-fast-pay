@@ -42,7 +42,7 @@ const SelectCurrency: FC<SelectCurrencyProps> = ({ currencies, currency, handleC
                     {currency?.name} ({currency?.symbol}){' '}
                 </a>
             )}
-            <div className="dropdown-menu dropdown-menu-end">
+            <div className="dropdown-menu dropdown-menu-end dropdown-currency-menu-end">
                 {currencies.map(currency => (
                     <a
                         key={currency.id}

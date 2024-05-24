@@ -69,3 +69,9 @@
   display: block;
   font-size: $font-size-sm;
 }
+
+@media (max-width: 576px) { // Bootstrap's breakpoint for mobile devices
+  .dropdown-currency-menu-end {
+    right: auto !important;
+  }
+}
